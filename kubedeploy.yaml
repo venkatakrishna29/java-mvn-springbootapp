@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: loksai-eta-deploy
+  name: krishna-deploy
   labels:
-    app: loksai-eta-deploy-lbl
+    app: krishna-deploy-lbl
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: loksai-eta-app
+      app: krishna-app
   template:
     metadata:
       labels:
-        app: loksai-eta-app
+        app: krishna-app
     spec:
       containers:
-      - name: loksai-eta-container
+      - name: krishna-container
         image: bvky/sa-webappsimage:v2.0
         ports:
         - containerPort: 8080
@@ -23,12 +23,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: loksai-eta-np-service
+  name: krishna-service
   labels:
-    app: loksai-eta-app
+    app: krishna-app
 spec:
   selector:
-    app: loksai-eta-deploy-lbl
+    app: krishna-deploy-lbl
 
   type: NodePort
   ports:
